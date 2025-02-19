@@ -15,26 +15,45 @@ development process.
 ::: code-group
 
 ```bash [Windows]
-git clone https://github.com/wheslleyrimar/buildcli.git
+setlocal
+git clone https://github.com/BuildCLI/BuildCLI.git
 cd BuildCLI
-mvn package
-copy target\buildcli C:\path\to\your\bin\buildcli
+mvn clean package
+mkdir %USERPROFILE%\bin
+copy target\buildcli.jar %USERPROFILE%\bin\buildcli.jar
+(
+    echo java -jar "%%USERPROFILE%%\bin\buildcli.jar" %%*
+) > %USERPROFILE%\bin\buildcli.bat
+setx PATH "%PATH%;%USERPROFILE%\bin"
+endlocal
 ```
 
 ```bash [Linux]
-git clone https://github.com/wheslleyrimar/buildcli.git
+git clone https://github.com/BuildCLI/BuildCLI.git 
 cd BuildCLI
-mvn package
-cp target/buildcli ~/bin/buildcli
-chmod +x ~/bin/buildcli
+mvn clean package
+cp target/buildcli.jar "$HOME/bin/"
+cat <<EOF > "$HOME/bin/buildcli"
+#!/bin/bash
+java -jar "\$HOME/bin/buildcli.jar" "\$@"
+EOF
+chmod +x "$HOME/bin/buildcli"
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 ```bash [Mac]
-git clone https://github.com/wheslleyrimar/buildcli.git
+git clone https://github.com/BuildCLI/BuildCLI.git 
 cd BuildCLI
-mvn package
-cp target/buildcli /usr/local/bin/buildcli
-chmod +x /usr/local/bin/buildcli
+mvn clean package
+cp target/buildcli.jar "$HOME/bin/"
+cat <<EOF > "$HOME/bin/buildcli"
+#!/bin/bash
+java -jar "\$HOME/bin/buildcli.jar" "\$@"
+EOF
+chmod +x "$HOME/bin/buildcli"
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
 ```
 
 :::
