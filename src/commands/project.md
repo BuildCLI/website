@@ -1,9 +1,16 @@
-
+[
 # `project`
-
+## Table of Contents
+- [Description](#description)
+- [Usage](#usage)
+- [Options](#options)
+- [Examples](#examples)
+- [Troubleshooting](#troubleshooting)
+- [See Also](#see-also)
 ## Description
 
-Manages Java projects with various subcommands.
+Manages project-specific settings and configurations for BuildCLI. This command allows users to create, manage, and view project details, ensuring that the CLI operates within the correct project context.
+
 
 ## Usage
 
@@ -35,15 +42,50 @@ buildcli project [subcommand] [options] [arguments]
 
 ## Examples
 
-### Example 1
+### Example 1: Initialize a New Project
 
-Initialize a new project.
+To create a new Java project, use the init subcommand:
 
 ```bash
-buildcli project init
+buildcli project init --name MyNewProject
 ```
+To add a new project:
+
+### Example 2: Add a New Project
+```bash
+buildcli project add --name MyProject --path /path/to/myproject
+```
+This command adds a project named MyProject located at the specified path to the project list.
+
+### Example 3: Remove an Existing Project
+To remove an existing project from the project list:
+```bash
+buildcli project remove --name MyProject
+```
+
+### Example 4: Build the Project
+To build the project:
+```bash
+buildcli project build
+```
+
+
+### Example 5: Run the Project
+To run the project:
+```bash
+buildcli project run
+```
+
+### Troubleshooting
+If you encounter issues while using the project commands:
+
+* Ensure that you have initialized the project correctly using the init command.
+* Check that the necessary files and directories are in place.
+* Refer to the specific subcommand help using buildcli project [subcommand] `--help` for more information.
+
 
 ## See Also
 
 - [autocomplete](autocomplete.md)
 - [about](about.md)
+- [version](version.md)]()
