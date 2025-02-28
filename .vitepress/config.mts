@@ -114,5 +114,13 @@ function sidebarCommands(): DefaultTheme.SidebarItem[] {
             text: 'Version',
             link: 'version',
         },
+        {
+            text: 'Doctor',
+            link: 'doctor',
+        },
+        {
+            text: 'Changelog',
+            link: 'changelog',
+        },
     ];
 }
