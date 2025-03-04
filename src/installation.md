@@ -2,6 +2,7 @@
 
 > [!IMPORTANT] Pre-requisites
 > Before installing BuildCLI, ensure that you have the following prerequisites installed on your system:
+>
 > - [Git](https://git-scm.com/downloads)
 > - [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html)
 > - [Apache Maven](https://maven.apache.org/download.cgi)
@@ -15,16 +16,20 @@ development process.
 ::: code-group
 
 ```bash [Windows]
+@echo off
 setlocal
 git clone https://github.com/BuildCLI/BuildCLI.git
 cd BuildCLI
 mvn clean package
-mkdir %USERPROFILE%\bin
-copy target\buildcli.jar %USERPROFILE%\bin\buildcli.jar
+if not exist "%USERPROFILE%\bin" mkdir "%USERPROFILE%\bin"
+copy /Y cli\target\buildcli.jar "%USERPROFILE%\bin\buildcli.jar"
 (
-    echo java -jar "%%USERPROFILE%%\bin\buildcli.jar" %%*
-) > %USERPROFILE%\bin\buildcli.bat
-setx PATH "%PATH%;%USERPROFILE%\bin"
+ echo @echo off
+ echo java --enable-preview --add-modules jdk.incubator.vector -jar "%%USERPROFILE%%\bin\buildcli.jar"
+) > "%USERPROFILE%\bin\buildcli.bat"
+echo %PATH% | findstr /I "%USERPROFILE%\bin" >nul || (
+ setx PATH "%PATH%;%USERPROFILE%\bin"
+)
 endlocal
 ```
 
@@ -32,7 +37,8 @@ endlocal
 git clone https://github.com/BuildCLI/BuildCLI.git 
 cd BuildCLI
 mvn clean package
-cp target/buildcli.jar "$HOME/bin/"
+mkdir -p "$HOME/bin"
+cp cli/target/buildcli.jar "$HOME/bin/"
 cat <<EOF > "$HOME/bin/buildcli"
 #!/bin/bash
 java -jar "\$HOME/bin/buildcli.jar" "\$@"
@@ -46,7 +52,8 @@ source ~/.bashrc
 git clone https://github.com/BuildCLI/BuildCLI.git 
 cd BuildCLI
 mvn clean package
-cp target/buildcli.jar "$HOME/bin/"
+mkdir -p "$HOME/bin"
+cp cli/target/buildcli.jar "$HOME/bin/"
 cat <<EOF > "$HOME/bin/buildcli"
 #!/bin/bash
 java -jar "\$HOME/bin/buildcli.jar" "\$@"
