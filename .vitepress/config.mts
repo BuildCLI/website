@@ -10,7 +10,8 @@ export default defineConfig({
     lastUpdated: true,
     cleanUrls: true,
     metaChunk: true,
-
+    head: [['link', { rel: 'icon', href: '/favicon.png' }]],
+    
     themeConfig: {
         nav: navBarItems(),
         sidebar: sidebar(),
