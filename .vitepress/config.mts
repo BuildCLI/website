@@ -127,5 +127,9 @@ function sidebarCommands(): DefaultTheme.SidebarItem[] {
             text: 'Config',
             link: 'config',
         },
+        {
+            text: 'AI',
+            link: 'ai',
+        },
     ];
 }
