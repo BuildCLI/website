@@ -100,24 +100,16 @@ function sidebarFAQ(): DefaultTheme.SidebarItem[] {
 function sidebarCommands(): DefaultTheme.SidebarItem[] {
     return [
         {
-            text: 'Autocomplete',
-            link: 'autocomplete',
-        },
-        {
-            text: 'Project',
-            link: 'project',
-        },
-        {
             text: 'About',
             link: 'about',
         },
         {
-            text: 'Version',
-            link: 'version',
+            text: 'AI',
+            link: 'ai',
         },
         {
-            text: 'Doctor',
-            link: 'doctor',
+            text: 'Autocomplete',
+            link: 'autocomplete',
         },
         {
             text: 'Changelog',
@@ -128,8 +120,25 @@ function sidebarCommands(): DefaultTheme.SidebarItem[] {
             link: 'config',
         },
         {
-            text: 'AI',
-            link: 'ai',
+            text: 'Doctor',
+            link: 'doctor',
+        },
+        
+        {
+            text: 'Hook',
+            link: 'hook',
+        },
+        {
+            text: 'Project',
+            link: 'project',
+        },
+        {
+            text: 'Run',
+            link: 'run',
+        },
+        {
+            text: 'Version',
+            link: 'version',
         },
     ];
 }
