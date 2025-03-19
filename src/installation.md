@@ -25,10 +25,10 @@ if not exist "%USERPROFILE%\bin" mkdir "%USERPROFILE%\bin"
 copy /Y cli\target\buildcli.jar "%USERPROFILE%\bin\buildcli.jar"
 (
  echo @echo off
- echo java --enable-preview --add-modules jdk.incubator.vector -jar "%%USERPROFILE%%\bin\buildcli.jar"
+ echo java --enable-preview --add-modules jdk.incubator.vector -jar "%USERPROFILE%\bin\buildcli.jar %*"
 ) > "%USERPROFILE%\bin\buildcli.bat"
 echo %PATH% | findstr /I "%USERPROFILE%\bin" >nul || (
- setx PATH "%PATH%;%USERPROFILE%\bin"
+ setx PATH "%%PATH%%;%USERPROFILE%\bin"
 )
 endlocal
 ```

@@ -24,7 +24,6 @@ buildcli project [subcommand] [options] [arguments]
 | `init, i`       | Initializes a new project.                  |
 | `cleanup, clean`| Cleans up the project.                      |
 | `update, up`    | Updates the project.                        |
-| `document-code, docs` | Documents the project code.           |
 
 ## Options
 
