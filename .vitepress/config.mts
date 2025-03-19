@@ -123,5 +123,9 @@ function sidebarCommands(): DefaultTheme.SidebarItem[] {
             text: 'Changelog',
             link: 'changelog',
         },
+        {
+            text: 'Config',
+            link: 'config',
+        },
     ];
 }
